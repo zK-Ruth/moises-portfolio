@@ -1,0 +1,154 @@
+{
+  "nav": {
+    "links": {
+      "about": "Sobre mí",
+      "projects": "Proyectos",
+      "work": "Experiencia",
+      "contact": "Contacto"
+    },
+    "downloadResume": "Descargar CV",
+    "langToggle": "EN"
+  },
+  "hero": {
+    "badge": "Disponible para trabajar",
+    "title": "Desarrollador Full Stack & <span class=\"underline-highlight\">Ingeniero DevSecOps</span>",
+    "subtitle": "Diseñando soluciones cloud escalables y desarrollando aplicaciones web seguras y de alto rendimiento. Conectando la infraestructura robusta con experiencias de usuario excepcionales.",
+    "cta": {
+      "viewWork": "Ver mi trabajo",
+      "getInTouch": "Contactarme"
+    }
+  },
+  "about": {
+    "label": "SOBRE MÍ",
+    "title": "Quién soy y qué hago",
+    "bio1": "Soy un ingeniero de software especializado en construir (y proteger) experiencias digitales excepcionales. Actualmente, me enfoco en diseñar arquitecturas cloud resilientes e implementar pipelines CI/CD con seguridad integrada.",
+    "quote": "La seguridad no debe ser una ocurrencia tardía; debe estar integrada en los cimientos de cada aplicación.",
+    "bio2": "Cuando no estoy escribiendo código o configurando clústeres de Kubernetes, puedo encontrarme contribuyendo a herramientas de seguridad de código abierto o escribiendo artículos técnicos en mi blog.",
+    "techLabel": "TECNOLOGÍAS PRINCIPALES",
+    "cards": {
+      "fullstack": {
+        "title": "Desarrollo Full Stack",
+        "description": "Construyendo aplicaciones web responsivas, accesibles y de alto rendimiento desde la base de datos hasta la interfaz."
+      },
+      "devsecops": {
+        "title": "DevSecOps y Cloud",
+        "description": "Automatizando despliegues, asegurando la infraestructura y gestionando recursos cloud escalables."
+      }
+    }
+  },
+  "projects": {
+    "label": "PROYECTOS",
+    "title": "Lo que he construido",
+    "viewProject": "Ver Proyecto",
+    "filters": {
+      "all": "Todos",
+      "fullstack": "Full Stack",
+      "devsecops": "DevSecOps",
+      "opensource": "Código Abierto"
+    },
+    "items": {
+      "securepipe": {
+        "title": "SecurePipe",
+        "description": "Generador automatizado de pipelines CI/CD que integra herramientas SAST y DAST por defecto para despliegues seguros."
+      },
+      "cloudarch": {
+        "title": "CloudArch",
+        "description": "Herramienta visual de planificación de infraestructura AWS construida con React que aprovecha el AWS SDK para estimación de costos en tiempo real."
+      },
+      "vaultguard": {
+        "title": "VaultGuard",
+        "description": "Interfaz empresarial de gestión de secretos para HashiCorp Vault, enfocada en la experiencia del desarrollador y la incorporación rápida."
+      },
+      "portfolioos": {
+        "title": "PortfolioOS",
+        "description": "Plantilla de portfolio para desarrolladores con estética de terminal, altamente interactiva, construida con Next.js y Framer Motion."
+      },
+      "threatmapper": {
+        "title": "ThreatMapper",
+        "description": "Utilidad de código abierto que visualiza posibles vectores de amenazas en clústeres de Kubernetes según los despliegues activos."
+      },
+      "apishield": {
+        "title": "APIShield",
+        "description": "Paquete middleware ligero para Express.js con limitación de velocidad avanzada y detección de anomalías para APIs REST."
+      }
+    }
+  },
+  "experience": {
+    "label": "EXPERIENCIA",
+    "title": "Trabajo y Trayectoria",
+    "certLabel": "CERTIFICACIONES",
+    "items": {
+      "1": {
+        "role": "Ingeniero DevSecOps Senior",
+        "description": "Lideré la migración de arquitecturas monolíticas heredadas a microservicios seguros en contenedores sobre AWS. Implementé análisis automático de vulnerabilidades en todos los pipelines CI/CD, reduciendo los incidentes de seguridad un 40%."
+      },
+      "2": {
+        "role": "Desarrollador Full Stack",
+        "description": "Desarrollé robustas SPA en React respaldadas por backends escalables con Node.js/Express. Impulsé la adopción de TypeScript en todo el equipo de ingeniería para mejorar la confiabilidad del código."
+      },
+      "3": {
+        "role": "Ingeniero Backend",
+        "description": "Diseñé y optimicé APIs RESTful para procesamiento de datos de alto volumen. Gestioné esquemas PostgreSQL y optimicé consultas complejas para mejorar el rendimiento."
+      },
+      "4": {
+        "role": "Desarrollador Junior",
+        "description": "Colaboré en el desarrollo de sitios web para clientes usando frameworks frontend tempranos y PHP. Adquirí experiencia fundamental en buenas prácticas de seguridad web."
+      }
+    },
+    "certs": {
+      "1": "AWS Certified Solutions Architect",
+      "2": "CompTIA Security+",
+      "3": "Certified Kubernetes Administrator (CKA)"
+    }
+  },
+  "contact": {
+    "label": "CONTACTO",
+    "title": "Construyamos algo juntos",
+    "subtitle": "Actualmente estoy abierto a nuevas oportunidades. Ya sea que tengas una pregunta o simplemente quieras saludar, ¡haré todo lo posible por responderte!",
+    "location": "San Francisco, CA",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "projectType": "Tipo de proyecto",
+      "budget": "Presupuesto",
+      "message": "Mensaje",
+      "submit": "Enviar solicitud",
+      "submitting": "Enviando...",
+      "options": {
+        "projectType": {
+          "fullstack": "Aplicación Full Stack",
+          "infra": "Infraestructura/Cloud",
+          "security": "Auditoría de seguridad",
+          "other": "Otro"
+        },
+        "budget": {
+          "under5k": "< $5k",
+          "range5to10k": "$5k - $10k",
+          "range10to25k": "$10k - $25k",
+          "over25k": "$25k+"
+        }
+      }
+    },
+    "success": {
+      "title": "¡Mensaje enviado!",
+      "message": "Gracias por ponerte en contacto. Me pondré en contacto contigo lo antes posible.",
+      "sendAnother": "Enviar otro"
+    },
+    "resume": {
+      "title": "¿Necesitas una copia formal?",
+      "link": "DESCARGAR CV EN PDF"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Moises D. Cruz. Todos los derechos reservados. Construido con precisión DevSecOps.",
+    "links": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "stackoverflow": "StackOverflow"
+    }
+  },
+  "notFound": {
+    "message": "Página no encontrada.",
+    "goHome": "Ir al inicio"
+  }
+}
