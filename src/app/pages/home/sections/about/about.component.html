@@ -1,28 +1,46 @@
-<section id="about" class="max-w-[1280px] mx-auto px-lg py-[80px] border-b border-surface-container-highest">
+<section
+  id="about"
+  class="max-w-[1280px] mx-auto px-lg py-[80px] border-b border-surface-container-highest"
+>
   <div class="flex flex-col gap-sm mb-xl">
-    <span class="font-label-caps text-[12px] text-primary-fixed-dim tracking-widest uppercase">{{ 'about.label' | translate }}</span>
-    <h2 class="font-display text-[32px] md:text-[40px] text-on-surface font-bold tracking-tight">{{ 'about.title' | translate }}</h2>
+    <span class="font-label-caps text-[12px] text-primary-fixed-dim tracking-widest uppercase">{{
+      'about.label' | translate
+    }}</span>
+    <h2 class="font-display text-[32px] md:text-[40px] text-on-surface font-bold tracking-tight">
+      {{ 'about.title' | translate }}
+    </h2>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
     <div class="flex flex-col gap-md">
       <p class="font-body-lg text-[18px] text-on-surface-variant">{{ 'about.bio1' | translate }}</p>
-      <blockquote class="pl-md border-l-[4px] border-primary-container font-body-md text-on-surface-variant italic my-sm bg-surface-container-low p-sm rounded-r-lg">
+      <blockquote
+        class="pl-md border-l-[4px] border-primary-container font-body-md text-on-surface-variant italic my-sm bg-surface-container-low p-sm rounded-r-lg"
+      >
         "{{ 'about.quote' | translate }}"
       </blockquote>
       <p class="font-body-md text-[16px] text-on-surface-variant">{{ 'about.bio2' | translate }}</p>
     </div>
     <div class="flex flex-col gap-lg">
       @for (card of expertiseCards; track card.title) {
-        <div class="bg-white rounded-xl border border-surface-container-highest p-lg shadow-subtle devsecops-card flex gap-md items-start">
+        <div
+          class="bg-white rounded-xl border border-surface-container-highest p-lg shadow-subtle devsecops-card flex gap-md items-start"
+        >
           <div class="p-sm bg-primary-fixed/20 rounded-lg text-primary-fixed-dim mt-xs">
             <span class="material-symbols-outlined">{{ card.icon }}</span>
           </div>
           <div>
-            <h3 class="font-display text-[20px] text-on-surface mb-xs">{{ card.title | translate }}</h3>
-            <p class="font-body-sm text-[14px] text-on-surface-variant mb-md">{{ card.description | translate }}</p>
+            <h3 class="font-display text-[20px] text-on-surface mb-xs">
+              {{ card.title | translate }}
+            </h3>
+            <p class="font-body-sm text-[14px] text-on-surface-variant mb-md">
+              {{ card.description | translate }}
+            </p>
             <div class="flex flex-wrap gap-xs">
               @for (tag of card.tags; track tag) {
-                <span class="bg-[#f5f5f5] px-sm py-[2px] rounded font-label-caps text-[12px] text-on-surface-variant">{{ tag }}</span>
+                <span
+                  class="bg-[#f5f5f5] px-sm py-[2px] rounded font-label-caps text-[12px] text-on-surface-variant"
+                  >{{ tag }}</span
+                >
               }
             </div>
           </div>
@@ -30,11 +48,17 @@
       }
     </div>
   </div>
-  <div class="mt-xl pt-lg border-t border-surface-container-highest bg-surface-container-low/50 p-lg rounded-xl">
-    <p class="font-label-caps text-[12px] text-on-surface-variant mb-md font-bold">{{ 'about.techLabel' | translate }}</p>
+  <div
+    class="mt-xl pt-lg border-t border-surface-container-highest bg-surface-container-low/50 p-lg rounded-xl"
+  >
+    <p class="font-label-caps text-[12px] text-on-surface-variant mb-md font-bold">
+      {{ 'about.techLabel' | translate }}
+    </p>
     <div class="flex flex-wrap gap-sm">
       @for (tech of coreTech; track tech) {
-        <div class="px-md py-sm bg-primary-container/10 border border-primary-container/30 rounded font-code text-[13px] text-on-surface hover:border-primary-container transition-colors cursor-default">
+        <div
+          class="px-md py-sm bg-primary-container/10 border border-primary-container/30 rounded font-code text-[13px] text-on-surface hover:border-primary-container transition-colors cursor-default"
+        >
           {{ tech }}
         </div>
       }

@@ -21,9 +21,9 @@
   "about": {
     "label": "ABOUT",
     "title": "Who I Am & What I Do",
-    "bio1": "I'm a software engineer specialized in building (and protecting) exceptional digital experiences. Currently, I'm focused on designing resilient cloud architectures and implementing security-first CI/CD pipelines.",
+    "bio1": "I'm a Full Stack Developer & DevSecOps Engineer specialized in building (and protecting) exceptional digital experiences. Currently, I'm focused on designing full stack websites and implementing security-first CI/CD pipelines.",
     "quote": "Security shouldn't be an afterthought; it needs to be engineered into the foundation of every application.",
-    "bio2": "When I'm not writing code or configuring Kubernetes clusters, you can find me contributing to open-source security tools or writing technical deep-dives on my blog.",
+    "bio2": "Outside of coding, I enjoy diving into cybersecurity, refining developer workflows, and building personal projects that challenge me creatively and technically. I’m passionate about creating software that feels intuitive, reliable, and thoughtfully engineered.",
     "techLabel": "CORE TECHNOLOGIES",
     "cards": {
       "fullstack": {

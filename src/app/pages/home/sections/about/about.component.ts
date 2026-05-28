@@ -13,15 +13,30 @@ export class AboutComponent {
       icon: 'code',
       title: 'about.cards.fullstack.title',
       description: 'about.cards.fullstack.description',
-      tags: ['React', 'Node.js', 'TypeScript'],
+      tags: ['Angular', 'Node.js', 'TypeScript', 'Databases'],
     },
     {
       icon: 'cloud',
       title: 'about.cards.devsecops.title',
       description: 'about.cards.devsecops.description',
-      tags: ['AWS', 'Docker/K8s', 'Terraform'],
+      tags: ['Pipelines', 'Docker/K8s', 'Python', 'Testing'],
     },
   ];
 
-  readonly coreTech = ['React', 'Node.js', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'PostgreSQL', 'GraphQL'];
+  readonly coreTech = [
+    'Angular',
+    'Node.js',
+    'Tailwind CSS',
+    'Kubernetes',
+    'Python',
+    'Docker',
+    'PostgreSQL',
+    'Java',
+    'C++',
+    'Typescript',
+    'Shell',
+    'DBMS',
+    'Google Cloud',
+    'Git',
+  ];
 }

@@ -21,9 +21,9 @@
   "about": {
     "label": "SOBRE MÍ",
     "title": "Quién soy y qué hago",
-    "bio1": "Soy un ingeniero de software especializado en construir (y proteger) experiencias digitales excepcionales. Actualmente, me enfoco en diseñar arquitecturas cloud resilientes e implementar pipelines CI/CD con seguridad integrada.",
+    "bio1": "Soy un Desarrollador Full Stack & Ingeniero DevSecOps especializado en construir (y proteger) experiencias digitales excepcionales. Actualmente, me enfoco en diseñar arquitecturas y páginas web e implementar pipelines CI/CD con seguridad integrada.",
     "quote": "La seguridad no debe ser una ocurrencia tardía; debe estar integrada en los cimientos de cada aplicación.",
-    "bio2": "Cuando no estoy escribiendo código o configurando clústeres de Kubernetes, puedo encontrarme contribuyendo a herramientas de seguridad de código abierto o escribiendo artículos técnicos en mi blog.",
+    "bio2": "Fuera de la programación, disfruto profundizar en ciberseguridad, optimizar flujos de trabajo y crear proyectos personales que me reten tanto creativa como técnicamente. Me apasiona desarrollar software que se sienta intuitivo, confiable y cuidadosamente diseñado.",
     "techLabel": "TECNOLOGÍAS PRINCIPALES",
     "cards": {
       "fullstack": {
