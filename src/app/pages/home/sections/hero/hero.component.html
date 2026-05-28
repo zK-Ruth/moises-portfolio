@@ -1,0 +1,48 @@
+<section
+  id="hero"
+  class="max-w-[1280px] mx-auto px-lg py-xl md:py-[120px] flex flex-col md:flex-row items-center gap-xl border-b border-surface-container-highest"
+>
+  <div class="w-full md:w-[60%] flex flex-col items-start gap-md">
+    <div
+      class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded-full border border-surface-container-highest font-label-caps text-[12px] text-on-surface-variant"
+    >
+      <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+      {{ 'hero.badge' | translate }}
+    </div>
+    <h1
+      class="font-display text-[48px] md:text-[64px] font-bold text-on-surface leading-tight tracking-tighter max-w-[800px]"
+      [innerHTML]="'hero.title' | translate"
+    ></h1>
+    <p class="font-body-lg text-[18px] text-on-surface-variant max-w-[600px] mt-sm">
+      {{ 'hero.subtitle' | translate }}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-md mt-lg w-full sm:w-auto">
+      <a
+        href="#projects"
+        class="inline-flex items-center justify-center px-xl py-md bg-primary-container text-on-surface font-body-md font-medium rounded hover:bg-primary-fixed-dim hover:scale-[1.02] transition-all duration-200"
+      >
+        {{ 'hero.cta.viewWork' | translate }}
+      </a>
+      <a
+        href="#contact"
+        class="inline-flex items-center justify-center px-xl py-md bg-transparent text-on-surface font-body-md font-medium border border-outline hover:border-on-surface hover:scale-[1.02] transition-all duration-200 rounded"
+      >
+        {{ 'hero.cta.getInTouch' | translate }}
+      </a>
+    </div>
+  </div>
+  <div class="w-full md:w-[40%] relative">
+    <div
+      class="relative rounded-xl overflow-hidden shadow-subtle border border-surface-container-highest bg-[#1a1a1a] p-xs aspect-[4/3] flex items-center justify-center"
+    >
+      <img
+        src="turip.png"
+        alt="Code Mockup"
+        class="w-full h-full object-cover rounded-lg opacity-90"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent pointer-events-none rounded-xl"
+      ></div>
+    </div>
+  </div>
+</section>

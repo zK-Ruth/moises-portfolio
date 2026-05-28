@@ -1,0 +1,33 @@
+<section id="work" class="max-w-[1280px] mx-auto px-lg py-[80px] border-b border-surface-container-highest">
+  <div class="flex flex-col gap-sm mb-xl">
+    <span class="font-label-caps text-[12px] text-primary-fixed-dim tracking-widest uppercase">{{ 'experience.label' | translate }}</span>
+    <h2 class="font-display text-[32px] md:text-[40px] text-on-surface font-bold tracking-tight">{{ 'experience.title' | translate }}</h2>
+  </div>
+  <div class="max-w-[800px]">
+    <div class="relative border-l-2 border-primary-container ml-md md:ml-xl space-y-xl pb-lg">
+      @for (exp of experiences; track exp.id) {
+        <div class="relative pl-lg md:pl-xl">
+          <div class="absolute w-4 h-4 bg-primary-container rounded-full -left-[9px] top-1 border-4 border-white"></div>
+          <div class="flex flex-col md:flex-row md:items-center gap-xs md:gap-md mb-sm">
+            <h3 class="font-display text-[20px] text-on-surface">{{ exp.role | translate }}</h3>
+            <span class="font-label-caps text-[12px] text-on-surface-variant hidden md:inline">•</span>
+            <span class="font-code text-[13px] text-on-surface-variant">{{ exp.company }}</span>
+            <span class="font-label-caps text-[12px] text-on-surface-variant ml-auto bg-surface-container-low px-sm py-[2px] rounded">{{ exp.period }}</span>
+          </div>
+          <p class="font-body-md text-[16px] text-on-surface-variant">{{ exp.description | translate }}</p>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="mt-xl pt-lg border-t border-surface-container-highest">
+    <p class="font-label-caps text-[12px] text-on-surface-variant mb-md">{{ 'experience.certLabel' | translate }}</p>
+    <div class="flex flex-wrap gap-md">
+      @for (cert of certifications; track cert.id) {
+        <div class="flex items-center gap-sm px-md py-sm bg-surface-container-low rounded border border-surface-container-highest hover:border-primary-container hover:scale-[1.02] transition-all duration-200 cursor-default">
+          <span class="material-symbols-outlined text-primary-fixed-dim">verified</span>
+          <span class="font-body-sm text-[14px] font-medium text-on-surface">{{ cert.name | translate }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

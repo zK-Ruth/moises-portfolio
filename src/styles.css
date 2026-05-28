@@ -1,1 +1,132 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+
+@theme {
+  /* Material Design 3 color tokens */
+  --color-primary: #745b00;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #f5c400;
+  --color-on-primary-container: #685200;
+  --color-primary-fixed: #ffe08b;
+  --color-primary-fixed-dim: #f1c100;
+  --color-on-primary-fixed: #241a00;
+  --color-on-primary-fixed-variant: #584400;
+  --color-inverse-primary: #f1c100;
+
+  --color-secondary: #705d00;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fdd73b;
+  --color-on-secondary-container: #715d00;
+  --color-secondary-fixed: #ffe173;
+  --color-secondary-fixed-dim: #e8c426;
+  --color-on-secondary-fixed: #221b00;
+  --color-on-secondary-fixed-variant: #554500;
+
+  --color-tertiary: #00677d;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #52daff;
+  --color-on-tertiary-container: #005d71;
+  --color-tertiary-fixed: #b3ebff;
+  --color-tertiary-fixed-dim: #4dd6fb;
+  --color-on-tertiary-fixed: #001f27;
+  --color-on-tertiary-fixed-variant: #004e5f;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-surface: #ffffff;
+  --color-surface-dim: #dcd9d9;
+  --color-surface-bright: #ffffff;
+  --color-surface-tint: #745b00;
+  --color-surface-variant: #e5e2e1;
+  --color-on-surface: #1c1b1b;
+  --color-on-surface-variant: #4e4632;
+  --color-inverse-surface: #313030;
+  --color-inverse-on-surface: #f3f0ef;
+
+  --color-background: #fcf9f8;
+  --color-on-background: #1c1b1b;
+
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container: #f0edec;
+  --color-surface-container-high: #ebe7e7;
+  --color-surface-container-highest: #e5e2e1;
+
+  --color-outline: #807660;
+  --color-outline-variant: #d1c5ab;
+
+  /* Font families */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-headline-lg: 'Space Grotesk', sans-serif;
+  --font-headline-md: 'Space Grotesk', sans-serif;
+  --font-headline-lg-mobile: 'Space Grotesk', sans-serif;
+  --font-body-lg: 'Inter', sans-serif;
+  --font-body-md: 'Inter', sans-serif;
+  --font-body-sm: 'Inter', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  --font-label-caps: 'JetBrains Mono', monospace;
+
+  /* Font sizes */
+  --text-display: 48px;
+  --text-headline-lg: 32px;
+  --text-headline-md: 20px;
+  --text-headline-lg-mobile: 24px;
+  --text-body-lg: 18px;
+  --text-body-md: 16px;
+  --text-body-sm: 14px;
+  --text-code: 13px;
+  --text-label-caps: 12px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+  --spacing-section-gap: 80px;
+  --spacing-gutter: 24px;
+  --spacing-unit: 4px;
+  --spacing-container-max: 1280px;
+
+  /* Border radius */
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+body {
+  background-color: #ffffff;
+  color: #1c1b1b;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.underline-highlight {
+  position: relative;
+  display: inline-block;
+}
+.underline-highlight::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: -2px;
+  left: 0;
+  background-color: #f5c400;
+  z-index: -1;
+}
+
+.devsecops-card {
+  border-left: 4px solid #f5c400;
+}
+
+.terminal-block {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
