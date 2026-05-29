@@ -1,46 +1,38 @@
-<section
-  id="about"
-  class="max-w-[1280px] mx-auto px-lg py-[80px] border-b border-surface-container-highest"
->
-  <div class="flex flex-col gap-sm mb-xl">
-    <span class="font-label-caps text-[12px] text-primary-fixed-dim tracking-widest uppercase">{{
-      'about.label' | translate
-    }}</span>
-    <h2 class="font-display text-[32px] md:text-[40px] text-on-surface font-bold tracking-tight">
-      {{ 'about.title' | translate }}
-    </h2>
+<section id="about" class="max-w-[1280px] mx-auto px-lg py-[80px] border-b border-surface-container-highest">
+
+  <!-- Header -->
+  <div class="about-header flex flex-col gap-sm mb-xl" [class.visible]="visible()">
+    <span class="font-label-caps text-[12px] text-primary-fixed-dim tracking-widest uppercase">{{ 'about.label' | translate }}</span>
+    <h2 class="font-display text-[32px] md:text-[40px] text-on-surface font-bold tracking-tight">{{ 'about.title' | translate }}</h2>
   </div>
+
+  <!-- Two-column grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
-    <div class="flex flex-col gap-md">
+
+    <!-- Bio -->
+    <div class="about-bio flex flex-col gap-md" [class.visible]="visible()">
       <p class="font-body-lg text-[18px] text-on-surface-variant">{{ 'about.bio1' | translate }}</p>
-      <blockquote
-        class="pl-md border-l-[4px] border-primary-container font-body-md text-on-surface-variant italic my-sm bg-surface-container-low p-sm rounded-r-lg"
-      >
+      <blockquote class="pl-md border-l-[4px] border-primary-container font-body-md text-on-surface-variant italic my-sm bg-surface-container-low p-sm rounded-r-lg">
         "{{ 'about.quote' | translate }}"
       </blockquote>
       <p class="font-body-md text-[16px] text-on-surface-variant">{{ 'about.bio2' | translate }}</p>
     </div>
-    <div class="flex flex-col gap-lg">
+
+    <!-- Expertise cards -->
+    <div class="about-cards flex flex-col gap-lg" [class.visible]="visible()">
       @for (card of expertiseCards; track card.title) {
-        <div
-          class="bg-white rounded-xl border border-surface-container-highest p-lg shadow-subtle devsecops-card flex gap-md items-start"
-        >
-          <div class="p-sm bg-primary-fixed/20 rounded-lg text-primary-fixed-dim mt-xs">
+        <div class="group bg-white rounded-xl border border-surface-container-highest p-lg shadow-subtle flex gap-md items-start
+                    hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.1)] hover:border-primary-container/50 transition-all duration-300">
+          <div class="p-sm bg-primary-fixed/20 rounded-lg text-primary-fixed-dim mt-xs
+                      group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
             <span class="material-symbols-outlined">{{ card.icon }}</span>
           </div>
           <div>
-            <h3 class="font-display text-[20px] text-on-surface mb-xs">
-              {{ card.title | translate }}
-            </h3>
-            <p class="font-body-sm text-[14px] text-on-surface-variant mb-md">
-              {{ card.description | translate }}
-            </p>
+            <h3 class="font-display text-[20px] text-on-surface mb-xs">{{ card.title | translate }}</h3>
+            <p class="font-body-sm text-[14px] text-on-surface-variant mb-md">{{ card.description | translate }}</p>
             <div class="flex flex-wrap gap-xs">
               @for (tag of card.tags; track tag) {
-                <span
-                  class="bg-[#f5f5f5] px-sm py-[2px] rounded font-label-caps text-[12px] text-on-surface-variant"
-                  >{{ tag }}</span
-                >
+                <span class="bg-[#f5f5f5] px-sm py-[2px] rounded font-label-caps text-[12px] text-on-surface-variant">{{ tag }}</span>
               }
             </div>
           </div>
@@ -48,20 +40,30 @@
       }
     </div>
   </div>
-  <div
-    class="mt-xl pt-lg border-t border-surface-container-highest bg-surface-container-low/50 p-lg rounded-xl"
-  >
-    <p class="font-label-caps text-[12px] text-on-surface-variant mb-md font-bold">
-      {{ 'about.techLabel' | translate }}
-    </p>
-    <div class="flex flex-wrap gap-sm">
-      @for (tech of coreTech; track tech) {
-        <div
-          class="px-md py-sm bg-primary-container/10 border border-primary-container/30 rounded font-code text-[13px] text-on-surface hover:border-primary-container transition-colors cursor-default"
-        >
-          {{ tech }}
+
+  <!-- Tech stack — categorized -->
+  <div class="about-tech mt-xl pt-lg border-t border-surface-container-highest" [class.visible]="visible()">
+    <p class="font-label-caps text-[12px] text-on-surface-variant mb-md font-bold">{{ 'about.techLabel' | translate }}</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-xl">
+      @for (group of techGroups; track group.label; let gi = $index) {
+        <div class="flex flex-col gap-sm">
+          <div class="flex items-center gap-xs mb-xs">
+            <span class="material-symbols-outlined text-primary-fixed-dim" style="font-size: 16px">{{ group.icon }}</span>
+            <span class="font-label-caps text-[11px] text-on-surface-variant tracking-widest uppercase">{{ group.label }}</span>
+          </div>
+          <div class="h-px bg-outline-variant/40 mb-sm"></div>
+          <div class="flex flex-wrap gap-xs">
+            @for (tech of group.items; track tech; let i = $index) {
+              <div
+                class="tech-chip px-md py-sm bg-primary-container/5 border border-primary-container/20 rounded font-code text-[13px] text-on-surface cursor-default"
+                [class.chip-visible]="visible()"
+                [style.animation-delay]="(gi * 8 + i) * 55 + 380 + 'ms'"
+              >{{ tech }}</div>
+            }
+          </div>
         </div>
       }
     </div>
   </div>
+
 </section>

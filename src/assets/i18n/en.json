@@ -40,6 +40,9 @@
     "label": "PROJECTS",
     "title": "Things I've Built",
     "viewProject": "View Project",
+    "unavailable": "Link Unavailable",
+    "private": "Private Project",
+    "comingSoon": "Coming Soon",
     "filters": {
       "all": "All",
       "fullstack": "Full Stack",
@@ -47,29 +50,29 @@
       "opensource": "Open Source"
     },
     "items": {
-      "securepipe": {
-        "title": "SecurePipe",
-        "description": "An automated CI/CD pipeline generator that injects SAST and DAST scanning tools by default for secure deployments."
+      "dinofeedback": {
+        "title": "DinoFeedback",
+        "description": "A modern SaaS feedback and survey platform built with Angular 20 and Firebase — a playful, AI-assisted competitor to Typeform and SurveyMonkey featuring a drag-and-drop form builder, real-time analytics, and i18n."
       },
-      "cloudarch": {
-        "title": "CloudArch",
-        "description": "A visual AWS infrastructure planning tool built with React and heavily leveraging AWS SDK for real-time cost estimation."
+      "dzeus": {
+        "title": "Dzeus Health",
+        "description": "A full-stack telemedicine platform (dzeus.com) delivering 100% online medical consultations, digital prescriptions, and home pharmacy delivery. HIPAA-compliant cloud architecture serving patients across Puerto Rico and Florida."
       },
-      "vaultguard": {
-        "title": "VaultGuard",
-        "description": "Enterprise-grade secrets management UI wrapper for HashiCorp Vault, focusing on developer experience and rapid onboarding."
+      "pipelines": {
+        "title": "Secure CI/CD Pipelines",
+        "description": "Enterprise DevSecOps pipelines for aerospace and defense systems at Collins Aerospace — automating builds, containerized deployments, and security scanning to ship mission-critical software with compliance baked in."
       },
-      "portfolioos": {
-        "title": "PortfolioOS",
-        "description": "A terminal-inspired, highly interactive developer portfolio template built with Next.js and Framer Motion."
+      "placeholder1": {
+        "title": "Project Title",
+        "description": "Placeholder — add your project description here."
       },
-      "threatmapper": {
-        "title": "ThreatMapper",
-        "description": "Open-source utility that visualizes potential threat vectors in Kubernetes clusters based on active deployments."
+      "placeholder2": {
+        "title": "Project Title",
+        "description": "Placeholder — add your project description here."
       },
-      "apishield": {
-        "title": "APIShield",
-        "description": "Lightweight Express.js middleware package that provides advanced rate limiting and anomaly detection for REST APIs."
+      "placeholder3": {
+        "title": "Project Title",
+        "description": "Placeholder — add your project description here."
       }
     }
   },

@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -6,8 +14,14 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslateModule],
   templateUrl: './about.component.html',
+  styleUrl: './about.component.css',
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit, OnDestroy {
+  private readonly host = inject(ElementRef);
+  private observer?: IntersectionObserver;
+
+  readonly visible = signal(false);
+
   readonly expertiseCards = [
     {
       icon: 'code',
@@ -23,20 +37,38 @@ export class AboutComponent {
     },
   ];
 
-  readonly coreTech = [
-    'Angular',
-    'Node.js',
-    'Tailwind CSS',
-    'Kubernetes',
-    'Python',
-    'Docker',
-    'PostgreSQL',
-    'Java',
-    'C++',
-    'Typescript',
-    'Shell',
-    'DBMS',
-    'Google Cloud',
-    'Git',
+  readonly techGroups = [
+    {
+      label: 'Frontend',
+      icon: 'web',
+      items: ['Angular', 'TypeScript', 'Tailwind CSS', 'Javascript'],
+    },
+    {
+      label: 'Backend',
+      icon: 'dns',
+      items: ['Node.js', 'Java', 'C++', 'Python', 'PostgreSQL', 'DBMS'],
+    },
+    {
+      label: 'DevOps & Cloud',
+      icon: 'cloud_sync',
+      items: ['Docker', 'Kubernetes', 'Google Cloud', 'Git', 'Shell'],
+    },
   ];
+
+  ngOnInit(): void {
+    this.observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          this.visible.set(true);
+          this.observer?.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    this.observer.observe(this.host.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
+  }
 }

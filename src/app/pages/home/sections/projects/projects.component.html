@@ -1,35 +1,127 @@
-<section id="projects" class="max-w-[1280px] mx-auto px-lg py-[80px] border-b border-surface-container-highest bg-[#fafafa]">
-  <div class="flex flex-col gap-sm mb-lg">
-    <span class="font-label-caps text-[12px] text-primary-fixed-dim tracking-widest uppercase">{{ 'projects.label' | translate }}</span>
-    <h2 class="font-display text-[32px] md:text-[40px] text-on-surface font-bold tracking-tight">{{ 'projects.title' | translate }}</h2>
+<section
+  id="projects"
+  class="relative overflow-hidden border-b border-surface-container-highest bg-[#fafafa]"
+>
+  <!-- Full-bleed decorative backdrop -->
+  <div class="projects-bg" aria-hidden="true">
+    <div class="projects-orb projects-orb-1"></div>
+    <div class="projects-orb projects-orb-2"></div>
   </div>
-  <div class="flex flex-wrap gap-sm mb-xl">
-    @for (filter of filters; track filter.value) {
-      <button
-        (click)="activeFilter.set(filter.value)"
-        [class]="activeFilter() === filter.value
-          ? 'px-md py-xs rounded-full bg-primary-container text-on-surface font-label-caps text-[12px] border border-transparent hover:scale-[1.02] transition-all duration-200'
-          : 'px-md py-xs rounded-full bg-transparent text-on-surface-variant font-label-caps text-[12px] border border-outline hover:border-on-surface hover:scale-[1.02] transition-all duration-200'"
-      >{{ filter.label | translate }}</button>
-    }
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-    @for (project of filteredProjects(); track project.id) {
-      <div class="bg-white rounded-xl border border-surface-container-highest overflow-hidden shadow-subtle group hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col">
-        <div class="h-2 w-full" [style.background-color]="project.accentColor"></div>
-        <div class="p-lg flex-1 flex flex-col">
-          <h3 class="font-display text-[20px] text-on-surface mb-xs">{{ project.title | translate }}</h3>
-          <p class="font-body-sm text-[14px] text-on-surface-variant mb-md flex-1">{{ project.description | translate }}</p>
-          <div class="flex flex-wrap gap-xs mb-lg">
-            @for (tag of project.tags; track tag) {
-              <span class="font-code text-[11px] text-on-surface bg-surface-container-low px-sm py-[2px] rounded">{{ tag }}</span>
+
+  <div class="relative z-10 max-w-[1280px] mx-auto px-lg py-[80px]">
+    <div class="flex flex-col gap-sm mb-lg">
+      <span class="font-label-caps text-[12px] text-primary-fixed-dim tracking-widest uppercase">{{
+        'projects.label' | translate
+      }}</span>
+      <h2 class="font-display text-[32px] md:text-[40px] text-on-surface font-bold tracking-tight">
+        {{ 'projects.title' | translate }}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg" [class.is-visible]="visible()">
+      @for (project of filteredProjects(); track project.id; let i = $index) {
+        <div
+          class="project-card bg-white rounded-xl border border-surface-container-highest overflow-hidden shadow-subtle group flex flex-col"
+          [style.--accent]="project.accentColor"
+          [style.animation-delay]="i * 90 + 'ms'"
+          (pointermove)="onCardMove($event)"
+        >
+          <!-- Cursor-tracking spotlight -->
+          <span class="card-spot"></span>
+
+          <!-- Cover: generated mesh + medallion, with optional real screenshot overlaid -->
+          <div
+            class="card-cover h-44 overflow-hidden"
+            [style.background]="coverBackground(project.accentColor)"
+          >
+            <!-- Large decorative watermark icon -->
+            @if (project.icon) {
+              <span
+                class="material-symbols-outlined absolute -right-6 -bottom-8 text-white/10 select-none pointer-events-none"
+                style="font-size: 160px"
+                >{{ project.icon }}</span
+              >
+            }
+
+            <!-- Centered glass medallion -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div
+                class="card-medallion w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300"
+              >
+                <span class="material-symbols-outlined text-white" style="font-size: 32px">{{
+                  project.icon ?? 'folder_code'
+                }}</span>
+              </div>
+            </div>
+
+            <!-- Category badge -->
+            <span
+              class="absolute top-3 right-3 px-sm py-[3px] rounded-full bg-black/25 backdrop-blur-sm border border-white/20 font-label-caps text-[10px] text-white tracking-widest uppercase z-[7]"
+            >
+              {{ 'projects.filters.' + project.category | translate }}
+            </span>
+
+            <!-- Real screenshot (overlays the generated cover when available) -->
+            @if (showImage(project)) {
+              <img
+                [src]="project.image"
+                [alt]="(project.title | translate) + ' preview'"
+                (error)="onImageError(project.id)"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            }
+
+            <!-- Light sweep -->
+            <span class="cover-shine"></span>
+
+            <!-- Bottom gradient for legibility / depth -->
+            <div
+              class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"
+            ></div>
+          </div>
+
+          <!-- Body -->
+          <div class="relative z-[5] p-lg flex-1 flex flex-col">
+            <h3 class="font-display text-[20px] text-on-surface mb-xs">
+              {{ project.title | translate }}
+            </h3>
+            <p class="font-body-sm text-[14px] text-on-surface-variant mb-md flex-1 line-clamp-3">
+              {{ project.description | translate }}
+            </p>
+            <div class="flex flex-wrap gap-xs mb-lg">
+              @for (tag of project.tags; track tag) {
+                <span
+                  class="project-tag font-code text-[11px] text-on-surface bg-surface-container-low px-sm py-[2px] rounded"
+                  >{{ tag }}</span
+                >
+              }
+            </div>
+
+            <!-- View Project — active link or disabled state -->
+            @if (isDisabled(project)) {
+              <span
+                class="inline-flex items-center gap-xs font-label-caps text-[12px] text-on-surface-variant/45 cursor-not-allowed select-none mt-auto"
+              >
+                <span class="material-symbols-outlined text-[14px]">lock</span>
+                {{ (project.disabledLabel ?? 'projects.unavailable') | translate }}
+              </span>
+            } @else {
+              <a
+                [href]="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-xs font-label-caps text-[12px] text-primary-fixed-dim hover:text-primary transition-colors mt-auto group-hover:text-primary"
+              >
+                {{ 'projects.viewProject' | translate }}
+                <span
+                  class="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform"
+                  >arrow_outward</span
+                >
+              </a>
             }
           </div>
-          <a [href]="project.url ?? '#'" class="inline-flex items-center gap-xs font-label-caps text-[12px] text-primary-fixed-dim hover:text-primary transition-colors mt-auto group-hover:text-primary">
-            {{ 'projects.viewProject' | translate }} <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
-          </a>
         </div>
-      </div>
-    }
+      }
+    </div>
   </div>
 </section>

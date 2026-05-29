@@ -1,0 +1,290 @@
+/* ───────────────────────── Entrance keyframes ───────────────────────── */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ───────────────────────── Ambient background motion ─────────────────── */
+@keyframes auroraDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, -8%, 0) scale(1.18);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes auroraDriftAlt {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-8%, 6%, 0) scale(0.9);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+}
+
+@keyframes floatCard {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.55;
+  }
+  60% {
+    transform: translateX(220%) skewX(-18deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes drawUnderline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ───────────────────────── Section + background ──────────────────────── */
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  /* Fade the whole backdrop out at every edge so the section's
+     max-width boundary never shows a hard cutoff on wide screens. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* Soft drifting colour blobs */
+.hero-aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  will-change: transform;
+}
+
+.hero-aurora-1 {
+  top: -120px;
+  right: -80px;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle at 30% 30%, rgba(245, 196, 0, 0.32), transparent 70%);
+  animation: auroraDrift 14s ease-in-out infinite;
+}
+
+.hero-aurora-2 {
+  bottom: -160px;
+  left: -100px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at 60% 40%, rgba(82, 218, 255, 0.404), transparent 70%);
+  animation: auroraDriftAlt 18s ease-in-out infinite;
+}
+
+/* Fine technical grid, faded at the edges */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(28, 27, 27, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 27, 27, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 78%);
+}
+
+/* ───────────────────────── Content entrance (staggered) ──────────────── */
+.hero-content > * {
+  opacity: 0;
+  animation: heroFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-badge {
+  animation-delay: 0.05s;
+}
+.hero-title {
+  animation-delay: 0.18s;
+}
+.hero-subtitle {
+  animation-delay: 0.32s;
+}
+.hero-actions {
+  animation-delay: 0.46s;
+}
+
+.hero-visual-wrap {
+  opacity: 0;
+  animation: heroReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+/* ───────────────────────── Primary CTA shine ─────────────────────────── */
+.hero-cta-primary {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(245, 196, 0, 0.28);
+}
+.hero-cta-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  transition: transform 0.7s ease;
+}
+.hero-cta-primary:hover::after {
+  transform: translateX(320%) skewX(-20deg);
+}
+.hero-cta-primary:hover {
+  box-shadow: 0 12px 32px rgba(245, 196, 0, 0.42);
+}
+
+/* ───────────────────────── Visual / image card ───────────────────────── */
+.hero-visual {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(1100px) rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg));
+  transition: transform 0.25s ease-out;
+}
+
+.hero-float {
+  animation: floatCard 7s ease-in-out infinite;
+}
+
+/* Rotating conic glow behind the card */
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: 0.85rem;
+  background: conic-gradient(
+    from 0deg,
+    rgba(245, 196, 0, 0),
+    rgba(245, 196, 0, 0.55),
+    rgba(82, 218, 255, 0.623),
+    rgba(245, 196, 0, 0)
+  );
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: borderSpin 8s linear infinite;
+}
+.hero-visual:hover::before {
+  opacity: 1;
+}
+
+/* Light sweep across the image */
+.hero-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+  animation: shineSweep 6.5s ease-in-out 1.4s infinite;
+}
+
+/* Floating accent chip on the card */
+.hero-chip {
+  position: absolute;
+  z-index: 3;
+  backdrop-filter: blur(8px);
+  animation: floatCard 5.5s ease-in-out 0.8s infinite;
+}
+
+/* ───────────────────────── Animated underline (innerHTML) ───────────── */
+:host ::ng-deep .underline-highlight::after {
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: drawUnderline 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
+}
+
+/* ───────────────────────── Reduced motion ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content > *,
+  .hero-visual-wrap,
+  .hero-aurora,
+  .hero-float,
+  .hero-shine,
+  .hero-chip,
+  .hero-visual::before,
+  :host ::ng-deep .underline-highlight::after {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

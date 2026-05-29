@@ -40,6 +40,9 @@
     "label": "PROYECTOS",
     "title": "Lo que he construido",
     "viewProject": "Ver Proyecto",
+    "unavailable": "Enlace No Disponible",
+    "private": "Proyecto Privado",
+    "comingSoon": "Próximamente",
     "filters": {
       "all": "Todos",
       "fullstack": "Full Stack",
@@ -47,29 +50,29 @@
       "opensource": "Código Abierto"
     },
     "items": {
-      "securepipe": {
-        "title": "SecurePipe",
-        "description": "Generador automatizado de pipelines CI/CD que integra herramientas SAST y DAST por defecto para despliegues seguros."
+      "dinofeedback": {
+        "title": "DinoFeedback",
+        "description": "Plataforma SaaS moderna de encuestas y feedback construida con Angular 20 y Firebase — un competidor divertido y asistido por IA frente a Typeform y SurveyMonkey, con creador de formularios drag-and-drop, analíticas en tiempo real e i18n."
       },
-      "cloudarch": {
-        "title": "CloudArch",
-        "description": "Herramienta visual de planificación de infraestructura AWS construida con React que aprovecha el AWS SDK para estimación de costos en tiempo real."
+      "dzeus": {
+        "title": "Dzeus Health",
+        "description": "Plataforma de telemedicina full-stack (dzeus.com) que ofrece consultas médicas 100% en línea, recetas digitales y entrega de farmacia a domicilio. Arquitectura cloud conforme con HIPAA que atiende a pacientes en Puerto Rico y Florida."
       },
-      "vaultguard": {
-        "title": "VaultGuard",
-        "description": "Interfaz empresarial de gestión de secretos para HashiCorp Vault, enfocada en la experiencia del desarrollador y la incorporación rápida."
+      "pipelines": {
+        "title": "Pipelines CI/CD Seguros",
+        "description": "Pipelines DevSecOps empresariales para sistemas aeroespaciales y de defensa en Collins Aerospace — automatizando builds, despliegues en contenedores y escaneo de seguridad para entregar software crítico con cumplimiento integrado."
       },
-      "portfolioos": {
-        "title": "PortfolioOS",
-        "description": "Plantilla de portfolio para desarrolladores con estética de terminal, altamente interactiva, construida con Next.js y Framer Motion."
+      "placeholder1": {
+        "title": "Título del Proyecto",
+        "description": "Marcador de posición — agrega aquí la descripción de tu proyecto."
       },
-      "threatmapper": {
-        "title": "ThreatMapper",
-        "description": "Utilidad de código abierto que visualiza posibles vectores de amenazas en clústeres de Kubernetes según los despliegues activos."
+      "placeholder2": {
+        "title": "Título del Proyecto",
+        "description": "Marcador de posición — agrega aquí la descripción de tu proyecto."
       },
-      "apishield": {
-        "title": "APIShield",
-        "description": "Paquete middleware ligero para Express.js con limitación de velocidad avanzada y detección de anomalías para APIs REST."
+      "placeholder3": {
+        "title": "Título del Proyecto",
+        "description": "Marcador de posición — agrega aquí la descripción de tu proyecto."
       }
     }
   },

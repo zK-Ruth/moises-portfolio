@@ -1,0 +1,209 @@
+:host {
+  display: block;
+}
+
+/* ───────────────────────── Section backdrop ──────────────────────────── */
+.projects-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.projects-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.5;
+  will-change: transform;
+}
+.projects-orb-1 {
+  top: -140px;
+  left: -60px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(245, 196, 0, 0.16), transparent 70%);
+  animation: orbFloat 16s ease-in-out infinite;
+}
+.projects-orb-2 {
+  bottom: -160px;
+  right: -40px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(0, 103, 125, 0.12), transparent 70%);
+  animation: orbFloatAlt 20s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(40px, 30px, 0) scale(1.12);
+  }
+}
+@keyframes orbFloatAlt {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-50px, -30px, 0) scale(0.92);
+  }
+}
+
+/* ───────────────────────── Card entrance (staggered) ─────────────────── */
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(36px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-card {
+  --accent: #f5c400;
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  opacity: 0;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.is-visible .project-card {
+  animation: cardIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Lift + accent-tinted glow on hover */
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow:
+    0 22px 48px -16px color-mix(in srgb, var(--accent) 50%, transparent),
+    0 10px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Cursor-tracking spotlight overlay */
+.project-card .card-spot {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    300px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--accent) 30%, transparent),
+    transparent 65%
+  );
+}
+.project-card:hover .card-spot {
+  opacity: 1;
+}
+
+/* ───────────────────────── Cover effects ─────────────────────────────── */
+.card-cover {
+  position: relative;
+}
+
+/* Animated top accent line that grows in on hover */
+.card-cover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 6;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 90%, white),
+    transparent
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-card:hover .card-cover::after {
+  transform: scaleX(1);
+}
+
+/* Light sweep across the cover on hover */
+.cover-shine {
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 35%;
+  height: 100%;
+  z-index: 3;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-18deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.project-card:hover .cover-shine {
+  animation: coverShine 0.95s ease;
+}
+@keyframes coverShine {
+  0% {
+    left: -40%;
+    opacity: 0.7;
+  }
+  100% {
+    left: 135%;
+    opacity: 0;
+  }
+}
+
+/* Medallion gentle breathing float */
+.card-medallion {
+  animation: medallionFloat 5s ease-in-out infinite;
+}
+@keyframes medallionFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Tag pop on card hover */
+.project-card .project-tag {
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+.project-card:hover .project-tag {
+  background-color: color-mix(in srgb, var(--accent) 14%, #f6f3f2);
+}
+
+/* ───────────────────────── Reduced motion ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .is-visible .project-card,
+  .projects-orb,
+  .card-medallion,
+  .cover-shine {
+    animation: none !important;
+  }
+  .project-card {
+    opacity: 1 !important;
+  }
+}
