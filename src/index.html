@@ -4,6 +4,14 @@
     <meta charset="utf-8" />
     <title>Moises.dev | Full Stack & DevSecOps</title>
     <base href="/" />
+    <script>
+      // Apply saved theme before first paint to avoid a flash. Light is default.
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"

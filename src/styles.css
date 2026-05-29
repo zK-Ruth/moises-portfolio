@@ -130,3 +130,107 @@ body {
   background-color: #1a1a1a;
   color: #ffffff;
 }
+
+/* ════════════════════════ DARK MODE ════════════════════════
+   Everything dark-related is scoped under `.dark` (set on <html>),
+   so light mode is completely untouched. Most utilities resolve
+   through the design tokens below; the few hardcoded colours used in
+   templates get targeted overrides further down. */
+.dark {
+  color-scheme: dark;
+
+  /* Brand accents stay vivid in the dark */
+  --color-primary: #f1c100;
+  --color-on-primary: #3a2e00;
+  --color-primary-container: #f5c400;
+  --color-on-primary-container: #241a00;
+  --color-primary-fixed: #ffe08b;
+  --color-primary-fixed-dim: #f1c100;
+  --color-on-primary-fixed: #241a00;
+  --color-on-primary-fixed-variant: #e3c64d;
+  --color-inverse-primary: #745b00;
+
+  --color-secondary: #e8c426;
+  --color-on-secondary: #3a2f00;
+  --color-secondary-container: #564600;
+  --color-on-secondary-container: #fde08b;
+  --color-secondary-fixed: #ffe173;
+  --color-secondary-fixed-dim: #e8c426;
+  --color-on-secondary-fixed: #221b00;
+  --color-on-secondary-fixed-variant: #e8c426;
+
+  --color-tertiary: #4dd6fb;
+  --color-on-tertiary: #00363f;
+  --color-tertiary-container: #004e5f;
+  --color-on-tertiary-container: #b3ebff;
+  --color-tertiary-fixed: #b3ebff;
+  --color-tertiary-fixed-dim: #4dd6fb;
+  --color-on-tertiary-fixed: #001f27;
+  --color-on-tertiary-fixed-variant: #4dd6fb;
+
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  /* Surfaces — near-black page, slightly raised cards */
+  --color-surface: #1a1c1e;
+  --color-surface-dim: #0e0f11;
+  --color-surface-bright: #35373a;
+  --color-surface-tint: #f1c100;
+  --color-surface-variant: #c4c7cf; /* used only as muted text (footer) */
+  --color-on-surface: #e4e2e0;
+  --color-on-surface-variant: #c6c6c8;
+  --color-inverse-surface: #26282b; /* keep footer dark/elevated */
+  --color-inverse-on-surface: #e4e2e0;
+
+  --color-background: #0e0f11;
+  --color-on-background: #e4e2e0;
+
+  --color-surface-container-lowest: #090a0c;
+  --color-surface-container-low: #16181a;
+  --color-surface-container: #1a1c1e;
+  --color-surface-container-high: #242629;
+  --color-surface-container-highest: #2f3134;
+
+  --color-outline: #8d9199;
+  --color-outline-variant: #43474e;
+
+  --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.dark body {
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+}
+
+/* Smooth the page-level switch without affecting static appearance */
+body {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Hardcoded light surfaces → dark equivalents */
+.dark .bg-white {
+  background-color: var(--color-surface);
+}
+.dark .bg-white\/95 {
+  background-color: color-mix(in srgb, var(--color-surface) 92%, transparent);
+}
+.dark .bg-\[\#fafafa\] {
+  background-color: #121417;
+}
+.dark .bg-\[\#f5f5f5\] {
+  background-color: #26282b;
+}
+
+/* Gold buttons keep dark text for contrast in both modes */
+.dark .bg-primary-container {
+  color: var(--color-on-primary-container);
+}
+
+/* Form-field focus ring → light in dark mode */
+.dark .focus\:ring-\[\#1a1a1a\]:focus {
+  --tw-ring-color: #8d9199;
+}

@@ -63,11 +63,11 @@
         "description": "Enterprise DevSecOps pipelines for aerospace and defense systems at Collins Aerospace — automating builds, containerized deployments, and security scanning to ship mission-critical software with compliance baked in."
       },
       "placeholder1": {
-        "title": "Project Title",
+        "title": "Playas PR",
         "description": "Placeholder — add your project description here."
       },
       "placeholder2": {
-        "title": "Project Title",
+        "title": "CRUD Application",
         "description": "Placeholder — add your project description here."
       },
       "placeholder3": {
@@ -82,7 +82,7 @@
     "certLabel": "CERTIFICATIONS",
     "items": {
       "1": {
-        "role": "Senior DevSecOps Engineer",
+        "role": "DevSecOps Engineer",
         "description": "Led the migration of legacy monolithic architectures to secure, containerized microservices on AWS. Implemented automated vulnerability scanning in all CI/CD pipelines, reducing security incidents by 40%."
       },
       "2": {
@@ -120,15 +120,18 @@
       "options": {
         "projectType": {
           "fullstack": "Full Stack App",
-          "infra": "Infrastructure/Cloud",
-          "security": "Security Audit",
+          "ecommerce": "E-commerce Website",
+          "infra": "Infra/Template Structure",
+          "portfolio": "Portfolio",
+          "pipeline": "Secured Pipeline",
           "other": "Other"
         },
         "budget": {
-          "under5k": "< $5k",
-          "range5to10k": "$5k - $10k",
-          "range10to25k": "$10k - $25k",
-          "over25k": "$25k+"
+          "under500": "< $500",
+          "range500to1k": "$500 - $1k",
+          "range1to3k": "$1k - $3k",
+          "range3to10k": "$3k - $10k",
+          "over10k": "$10k+"
         }
       }
     },
@@ -143,7 +146,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2024 Moises D. Cruz. All rights reserved. Built with DevSecOps precision.",
+    "copyright": "© 2026 Moises D. Cruz. All rights reserved. Built with DevSecOps precision.",
     "links": {
       "linkedin": "LinkedIn",
       "github": "GitHub",

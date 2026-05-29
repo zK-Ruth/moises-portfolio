@@ -1,6 +1,12 @@
-<nav class="bg-white/95 backdrop-blur-md text-primary font-body-md sticky top-0 w-full z-50 border-b border-outline-variant/30">
-  <div class="max-w-[1280px] mx-auto flex justify-between items-center px-lg py-md">
-    <a href="#" class="font-display text-[20px] font-bold text-on-surface tracking-tighter flex items-center gap-xs">
+<nav
+  class="nav-root bg-white/95 backdrop-blur-md text-primary font-body-md sticky top-0 w-full z-50 border-b border-outline-variant/30"
+  [class.scrolled]="scrolled()"
+>
+  <div class="nav-inner max-w-[1280px] mx-auto flex justify-between items-center px-lg py-md">
+    <a
+      href="#"
+      class="font-display text-[20px] font-bold text-on-surface tracking-tighter flex items-center gap-xs"
+    >
       Moises D. Cruz
       <span class="w-2 h-2 bg-primary-container rounded-sm inline-block animate-pulse"></span>
     </a>
@@ -9,56 +15,137 @@
       @for (link of navLinks; track link.id) {
         <a
           [href]="link.href"
-          [class]="activeSection() === link.id
-            ? 'text-primary font-bold border-b-2 border-primary pb-1 transition-all duration-200'
-            : 'text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 transition-all duration-200'"
-        >{{ link.label | translate }}</a>
+          [class]="
+            activeSection() === link.id
+              ? 'text-primary font-bold border-b-2 border-primary pb-1 transition-all duration-200'
+              : 'text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 transition-all duration-200'
+          "
+          >{{ link.label | translate }}</a
+        >
       }
     </div>
 
-    <div class="hidden md:flex items-center gap-sm">
+    <div class="hidden md:flex items-center gap-md">
+      <!-- Language segmented toggle (shows current language) -->
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <span class="lang-pill" [class.to-es]="langService.currentLang() === 'es'"></span>
+        <button
+          type="button"
+          class="lang-opt"
+          [class.active]="langService.currentLang() === 'en'"
+          (click)="langService.setLanguage('en')"
+        >
+          EN
+        </button>
+        <button
+          type="button"
+          class="lang-opt"
+          [class.active]="langService.currentLang() === 'es'"
+          (click)="langService.setLanguage('es')"
+        >
+          ES
+        </button>
+      </div>
+
+      <!-- Dark mode toggle -->
       <button
-        (click)="langService.toggle()"
-        class="px-sm py-xs font-code text-[12px] text-on-surface-variant border border-outline rounded hover:border-primary-container hover:text-on-surface transition-all duration-200"
-      >{{ 'nav.langToggle' | translate }}</button>
-      <a href="#" class="inline-flex items-center justify-center px-lg py-sm bg-primary-container text-on-surface font-body-md font-medium rounded hover:bg-primary-fixed-dim hover:scale-[1.02] transition-all active:scale-95 duration-200">
+        type="button"
+        (click)="theme.toggle()"
+        class="theme-toggle inline-flex items-center justify-center w-9 h-9 rounded-lg border border-outline/45 bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:border-primary-container transition-colors"
+        [attr.aria-label]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+        [attr.aria-pressed]="theme.isDark()"
+      >
+        <span class="material-symbols-outlined text-[18px]">{{
+          theme.isDark() ? 'light_mode' : 'dark_mode'
+        }}</span>
+      </button>
+
+      <a
+        href="#"
+        class="inline-flex items-center gap-xs px-lg py-sm bg-primary-container text-on-surface font-body-md font-medium rounded-lg hover:bg-primary-fixed-dim hover:scale-[1.02] transition-all active:scale-95 duration-200"
+      >
+        <span class="material-symbols-outlined text-[18px]">download</span>
         {{ 'nav.downloadResume' | translate }}
       </a>
     </div>
 
-    @if (mobileMenuOpen()) {
-      <button
-        class="md:hidden text-on-surface p-sm hover:scale-[1.02] transition-all duration-200"
-        (click)="toggleMobileMenu()"
-      >
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    } @else {
-      <button
-        class="md:hidden text-on-surface p-sm hover:scale-[1.02] transition-all duration-200"
-        (click)="toggleMobileMenu()"
-      >
-        <span class="material-symbols-outlined">menu</span>
-      </button>
-    }
+    <!-- Animated hamburger -->
+    <button
+      class="hamburger inline-flex md:hidden"
+      [class.is-open]="mobileMenuOpen()"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="mobileMenuOpen()"
+      aria-label="Toggle menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 
-  @if (mobileMenuOpen()) {
-    <div class="md:hidden bg-white border-t border-outline-variant/30 px-lg py-md flex flex-col gap-md">
-      @for (link of navLinks; track link.id) {
-        <a [href]="link.href" class="text-on-surface-variant hover:text-primary transition-colors font-body-md" (click)="mobileMenuOpen.set(false)">
+  <!-- Mobile menu (always rendered, animated open/close) -->
+  <div
+    class="mobile-menu md:hidden bg-white border-t border-outline-variant/30"
+    [class.open]="mobileMenuOpen()"
+  >
+    <div class="px-lg py-md flex flex-col gap-md">
+      @for (link of navLinks; track link.id; let i = $index) {
+        <a
+          [href]="link.href"
+          class="m-item text-on-surface-variant hover:text-primary transition-colors font-body-md"
+          [style.transition-delay]="mobileMenuOpen() ? i * 60 + 80 + 'ms' : '0ms'"
+          (click)="closeMobileMenu()"
+        >
           {{ link.label | translate }}
         </a>
       }
-      <div class="flex items-center gap-sm mt-sm">
-        <button
-          (click)="langService.toggle()"
-          class="px-sm py-xs font-code text-[12px] text-on-surface-variant border border-outline rounded hover:border-primary-container transition-all duration-200"
-        >{{ 'nav.langToggle' | translate }}</button>
-        <a href="#" class="inline-flex items-center justify-center px-lg py-sm bg-primary-container text-on-surface font-body-md font-medium rounded flex-1 text-center">
+      <div
+        class="m-item flex flex-col gap-md mt-sm"
+        [style.transition-delay]="mobileMenuOpen() ? navLinks.length * 60 + 80 + 'ms' : '0ms'"
+      >
+        <!-- Language toggle + theme toggle (mobile — compact, left-aligned) -->
+        <div class="flex items-center gap-sm self-start">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <span class="lang-pill" [class.to-es]="langService.currentLang() === 'es'"></span>
+            <button
+              type="button"
+              class="lang-opt"
+              [class.active]="langService.currentLang() === 'en'"
+              (click)="langService.setLanguage('en')"
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              class="lang-opt"
+              [class.active]="langService.currentLang() === 'es'"
+              (click)="langService.setLanguage('es')"
+            >
+              ES
+            </button>
+          </div>
+
+          <!-- Dark mode toggle -->
+          <button
+            type="button"
+            (click)="theme.toggle()"
+            class="theme-toggle inline-flex items-center justify-center w-9 h-9 rounded-lg border border-outline/45 bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:border-primary-container transition-colors"
+            [attr.aria-label]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+            [attr.aria-pressed]="theme.isDark()"
+          >
+            <span class="material-symbols-outlined text-[18px]">{{
+              theme.isDark() ? 'light_mode' : 'dark_mode'
+            }}</span>
+          </button>
+        </div>
+        <a
+          href="#"
+          class="inline-flex items-center justify-center gap-sm w-full px-lg py-md bg-primary-container text-on-surface font-body-md font-medium rounded-lg whitespace-nowrap hover:bg-primary-fixed-dim active:scale-[0.98] transition-all duration-200"
+        >
+          <span class="material-symbols-outlined text-[18px]">download</span>
           {{ 'nav.downloadResume' | translate }}
         </a>
       </div>
     </div>
-  }
+  </div>
 </nav>

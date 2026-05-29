@@ -95,17 +95,17 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       disabled: true,
       disabledLabel: 'projects.comingSoon',
     },
-    {
-      id: 'placeholder3',
-      title: 'projects.items.placeholder3.title',
-      description: 'projects.items.placeholder3.description',
-      tags: ['TBD'],
-      category: 'fullstack',
-      accentColor: '#f5c400',
-      icon: 'hourglass_top',
-      disabled: true,
-      disabledLabel: 'projects.comingSoon',
-    },
+    // {
+    //   id: 'placeholder3',
+    //   title: 'projects.items.placeholder3.title',
+    //   description: 'projects.items.placeholder3.description',
+    //   tags: ['TBD'],
+    //   category: 'fullstack',
+    //   accentColor: '#f5c400',
+    //   icon: 'hourglass_top',
+    //   disabled: true,
+    //   disabledLabel: 'projects.comingSoon',
+    // },
   ];
 
   readonly filteredProjects = computed(() => {
