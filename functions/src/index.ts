@@ -43,6 +43,24 @@ const initialsOf = (name: string): string =>
     .map((part) => part.charAt(0).toUpperCase())
     .join('') || '•';
 
+/** Plain-text alternative — multipart emails land in the inbox far more reliably. */
+function buildEmailText(data: ContactPayload): string {
+  return [
+    'NEW PROJECT INQUIRY',
+    '',
+    `From:    ${data.name} <${data.email}>`,
+    `Project: ${data.projectType}`,
+    `Budget:  ${data.budget}`,
+    '',
+    'Message:',
+    data.message,
+    '',
+    '—',
+    `Reply directly to this email to respond to ${data.name}.`,
+    'Sent from your portfolio contact form.',
+  ].join('\n');
+}
+
 /** Builds the responsive, brand-styled HTML email (inline styles for client support). */
 function buildEmailHtml(data: ContactPayload): string {
   const name = escapeHtml(data.name);
@@ -191,6 +209,7 @@ export const sendContactEmail = onRequest({ secrets: [RESEND_API_KEY] }, (req, r
           reply_to: email,
           subject: `${name} — ${projectType}`,
           html: buildEmailHtml(payload),
+          text: buildEmailText(payload),
         }),
       });
 
