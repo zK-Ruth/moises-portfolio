@@ -186,7 +186,7 @@ export const sendContactEmail = onRequest({ secrets: [RESEND_API_KEY] }, (req, r
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Portfolio Inquiry <onboarding@resend.dev>',
+          from: 'Portfolio Inquiry <noreply@dinofeedback.app>',
           to: [RECIPIENT],
           reply_to: email,
           subject: `${name} — ${projectType}`,
