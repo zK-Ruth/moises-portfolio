@@ -117,6 +117,7 @@
       "message": "Mensaje",
       "submit": "Enviar solicitud",
       "submitting": "Enviando...",
+      "error": "Algo salió mal. Inténtalo de nuevo o escríbeme directamente.",
       "options": {
         "projectType": {
           "fullstack": "Aplicación Full Stack",

@@ -1,5 +1,5 @@
-import { Injectable, inject } from '@angular/core';
-import { Firestore, collection, addDoc, serverTimestamp } from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 export interface ContactForm {
   name: string;
@@ -11,10 +11,17 @@ export interface ContactForm {
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-  private readonly firestore = inject(Firestore);
-
+  /** Sends the inquiry to the Cloud Function, which emails a formatted message. */
   async submitContact(form: ContactForm): Promise<void> {
-    const ref = collection(this.firestore, 'contacts');
-    await addDoc(ref, { ...form, createdAt: serverTimestamp() });
+    const response = await fetch(environment.contactEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    });
+
+    if (!response.ok) {
+      const detail = await response.json().catch(() => ({}));
+      throw new Error((detail as { error?: string }).error ?? 'Failed to send message.');
+    }
   }
 }

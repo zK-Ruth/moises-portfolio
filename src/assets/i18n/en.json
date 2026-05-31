@@ -117,6 +117,7 @@
       "message": "Message",
       "submit": "Send Request",
       "submitting": "Sending...",
+      "error": "Something went wrong. Please try again or email me directly.",
       "options": {
         "projectType": {
           "fullstack": "Full Stack App",

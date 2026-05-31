@@ -1,5 +1,7 @@
 export const environment = {
   production: false,
+  contactEndpoint:
+    'https://us-central1-moises-portfolio-mdcc.cloudfunctions.net/sendContactEmail',
   firebase: {
     apiKey: 'AIzaSyDED9Eg7swCckg2oBJDOuN-VjEnVBEP9nE',
     authDomain: 'moises-portfolio-mdcc.firebaseapp.com',

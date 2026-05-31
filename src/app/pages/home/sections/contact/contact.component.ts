@@ -27,6 +27,7 @@ export class ContactComponent {
 
   readonly submitted = signal(false);
   readonly loading = signal(false);
+  readonly error = signal(false);
 
   readonly projectTypeOptions: SelectOption[] = [
     { value: 'Full Stack App', labelKey: 'contact.form.options.projectType.fullstack' },
@@ -74,12 +75,18 @@ export class ContactComponent {
   });
 
   async onSubmit(): Promise<void> {
-    if (this.form.invalid) return;
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
     this.loading.set(true);
+    this.error.set(false);
     try {
       await this.contactService.submitContact(this.form.getRawValue());
       this.submitted.set(true);
       this.form.reset();
+    } catch {
+      this.error.set(true);
     } finally {
       this.loading.set(false);
     }
