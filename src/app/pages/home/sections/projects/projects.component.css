@@ -114,6 +114,17 @@
   position: relative;
 }
 
+/* Floating browser-window frame around real screenshots */
+.card-window {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-card:hover .card-window {
+  transform: translateY(-3px);
+}
+:host-context(.dark) .card-window {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
 /* Animated top accent line that grows in on hover */
 .card-cover::after {
   content: '';

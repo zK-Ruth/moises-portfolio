@@ -29,55 +29,66 @@
           <!-- Cursor-tracking spotlight -->
           <span class="card-spot"></span>
 
-          <!-- Cover: generated mesh + medallion, with optional real screenshot overlaid -->
+          <!-- Cover: framed screenshot when available, else generated mesh + medallion -->
           <div
             class="card-cover h-44 overflow-hidden"
             [style.background]="coverBackground(project.accentColor)"
           >
-            <!-- Large decorative watermark icon -->
-            @if (project.icon) {
-              <span
-                class="material-symbols-outlined absolute -right-6 -bottom-8 text-white/10 select-none pointer-events-none"
-                style="font-size: 160px"
-                >{{ project.icon }}</span
-              >
-            }
-
-            <!-- Centered glass medallion -->
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div
-                class="card-medallion w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300"
-              >
-                <span class="material-symbols-outlined text-white" style="font-size: 32px">{{
-                  project.icon ?? 'folder_code'
-                }}</span>
-              </div>
-            </div>
-
-            <!-- Category badge -->
+            <!-- Category badge (always on top) -->
             <span
-              class="absolute top-3 right-3 px-sm py-[3px] rounded-full bg-black/25 backdrop-blur-sm border border-white/20 font-label-caps text-[10px] text-white tracking-widest uppercase z-[7]"
+              class="absolute top-3 right-3 px-sm py-[3px] rounded-full bg-black/30 backdrop-blur-sm border border-white/20 font-label-caps text-[10px] text-white tracking-widest uppercase z-20"
             >
               {{ 'projects.filters.' + project.category | translate }}
             </span>
 
-            <!-- Real screenshot (overlays the generated cover when available) -->
             @if (showImage(project)) {
-              <img
-                [src]="project.image"
-                [alt]="(project.title | translate) + ' preview'"
-                (error)="onImageError(project.id)"
-                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <!-- Screenshot framed in a floating browser window so white shots don't blend in -->
+              <div class="absolute inset-0 pt-7 px-4 pb-4">
+                <div
+                  class="card-window w-full h-full rounded-lg overflow-hidden border border-black/15 shadow-xl flex flex-col bg-white"
+                >
+                  <div class="h-5 shrink-0 flex items-center gap-1.5 px-2 bg-black/10">
+                    <span class="w-2 h-2 rounded-full bg-[#ff5f57]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#febc2e]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#28c840]"></span>
+                  </div>
+                  <img
+                    [src]="project.image"
+                    [alt]="(project.title | translate) + ' preview'"
+                    (error)="onImageError(project.id)"
+                    class="flex-1 min-h-0 w-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            } @else {
+              <!-- Large decorative watermark icon -->
+              @if (project.icon) {
+                <span
+                  class="material-symbols-outlined absolute -right-6 -bottom-8 text-white/10 select-none pointer-events-none"
+                  style="font-size: 160px"
+                  >{{ project.icon }}</span
+                >
+              }
+
+              <!-- Centered glass medallion -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="card-medallion w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300"
+                >
+                  <span class="material-symbols-outlined text-white" style="font-size: 32px">{{
+                    project.icon ?? 'folder_code'
+                  }}</span>
+                </div>
+              </div>
+
+              <!-- Bottom gradient for legibility / depth -->
+              <div
+                class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"
+              ></div>
             }
 
             <!-- Light sweep -->
             <span class="cover-shine"></span>
-
-            <!-- Bottom gradient for legibility / depth -->
-            <div
-              class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"
-            ></div>
           </div>
 
           <!-- Body -->
@@ -85,7 +96,7 @@
             <h3 class="font-display text-[20px] text-on-surface mb-xs">
               {{ project.title | translate }}
             </h3>
-            <p class="font-body-sm text-[14px] text-on-surface-variant mb-md flex-1 line-clamp-3">
+            <p class="font-body-sm text-[14px] text-on-surface-variant mb-md flex-1">
               {{ project.description | translate }}
             </p>
             <div class="flex flex-wrap gap-xs mb-lg">

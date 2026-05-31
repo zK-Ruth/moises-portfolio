@@ -62,15 +62,15 @@
         "title": "Secure CI/CD Pipelines",
         "description": "Enterprise DevSecOps pipelines for aerospace and defense systems at Collins Aerospace — automating builds, containerized deployments, and security scanning to ship mission-critical software with compliance baked in."
       },
-      "placeholder1": {
+      "playaspr": {
         "title": "Playas PR",
         "description": "Placeholder — add your project description here."
       },
-      "placeholder2": {
+      "crudapp": {
         "title": "CRUD Application",
         "description": "Placeholder — add your project description here."
       },
-      "placeholder3": {
+      "placeholder": {
         "title": "Project Title",
         "description": "Placeholder — add your project description here."
       }
@@ -108,7 +108,7 @@
     "label": "CONTACT",
     "title": "Let's Build Something Together",
     "subtitle": "I'm currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
-    "location": "San Francisco, CA",
+    "location": "Isabela, PR",
     "form": {
       "name": "Name",
       "email": "Email",
@@ -140,9 +140,9 @@
       "message": "Thanks for reaching out. I'll get back to you as soon as possible.",
       "sendAnother": "Send another"
     },
-    "resume": {
-      "title": "Need a formal copy?",
-      "link": "DOWNLOAD RESUME PDF"
+    "availability": {
+      "title": "Available for new projects",
+      "subtitle": "Usually responds within 24 hours"
     }
   },
   "footer": {

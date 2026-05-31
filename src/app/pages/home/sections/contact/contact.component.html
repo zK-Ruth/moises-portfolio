@@ -42,7 +42,7 @@
           href="mailto:hello@alex.dev"
           class="inline-flex items-center gap-sm font-body-md text-[16px] text-on-surface hover:text-primary hover:scale-[1.02] transition-all duration-200 w-max"
         >
-          <span class="material-symbols-outlined">mail</span> hello&#64;alex.dev
+          <span class="material-symbols-outlined">mail</span> mdanielcruz66&#64;gmail.com
         </a>
         <div class="inline-flex items-center gap-sm font-body-md text-[16px] text-on-surface">
           <span class="material-symbols-outlined">location_on</span>
@@ -51,34 +51,40 @@
       </div>
       <div class="flex gap-md">
         <a
-          href="#"
+          href="mailto:mdanielcruz66@gmail.com"
+          aria-label="Email me"
           class="w-10 h-10 rounded-full bg-surface-container-low border border-surface-container-highest flex items-center justify-center hover:border-primary-container hover:scale-[1.05] transition-all duration-200 text-on-surface"
         >
-          <span class="material-symbols-outlined text-[20px]">link</span>
+          <span class="material-symbols-outlined text-[20px]">mail</span>
         </a>
         <a
-          href="#"
+          href="https://www.linkedin.com/in/mdcc02/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn profile"
           class="w-10 h-10 rounded-full bg-surface-container-low border border-surface-container-highest flex items-center justify-center hover:border-primary-container hover:scale-[1.05] transition-all duration-200 text-on-surface"
         >
-          <span class="material-symbols-outlined text-[20px]">code</span>
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true">
+            <path
+              d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+            />
+          </svg>
         </a>
       </div>
       <div
         class="mt-auto bg-white rounded-xl border border-surface-container-highest p-md shadow-subtle devsecops-card max-w-[300px] hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300"
       >
         <div class="flex items-center gap-md">
-          <div class="p-sm bg-surface-container-low rounded">
-            <span class="material-symbols-outlined text-primary-fixed-dim">description</span>
+          <div class="relative p-sm bg-surface-container-low rounded">
+            <span class="material-symbols-outlined text-primary-fixed-dim">bolt</span>
           </div>
           <div>
             <p class="font-body-sm font-bold text-on-surface">
-              {{ 'contact.resume.title' | translate }}
+              {{ 'contact.availability.title' | translate }}
             </p>
-            <a
-              href="#"
-              class="font-label-caps text-[12px] text-on-surface-variant hover:text-primary transition-colors underline decoration-1 underline-offset-2"
-              >{{ 'contact.resume.link' | translate }}</a
-            >
+            <p class="font-label-caps text-[12px] text-on-surface-variant">
+              {{ 'contact.availability.subtitle' | translate }}
+            </p>
           </div>
         </div>
       </div>
@@ -138,56 +144,17 @@
                 for="projectType"
                 >{{ 'contact.form.projectType' | translate }}</label
               >
-              <select
+              <app-select
                 formControlName="projectType"
                 id="projectType"
-                class="bg-[#f5f5f5] border-none rounded-lg px-md py-sm font-body-md text-on-surface focus:ring-1 focus:ring-[#1a1a1a] transition-shadow outline-none"
-              >
-                <option value="Full Stack App">
-                  {{ 'contact.form.options.projectType.fullstack' | translate }}
-                </option>
-                <option value="E-commerce Website">
-                  {{ 'contact.form.options.projectType.ecommerce' | translate }}
-                </option>
-                <option value="Infra/Template Structure">
-                  {{ 'contact.form.options.projectType.infra' | translate }}
-                </option>
-                <option value="Portfolio">
-                  {{ 'contact.form.options.projectType.portfolio' | translate }}
-                </option>
-                <option value="Secured Pipeline">
-                  {{ 'contact.form.options.projectType.pipeline' | translate }}
-                </option>
-                <option value="Other">
-                  {{ 'contact.form.options.projectType.other' | translate }}
-                </option>
-              </select>
+                [options]="projectTypeOptions"
+              />
             </div>
             <div class="flex flex-col gap-xs">
               <label class="font-label-caps text-[12px] text-on-surface-variant" for="budget">{{
                 'contact.form.budget' | translate
               }}</label>
-              <select
-                formControlName="budget"
-                id="budget"
-                class="bg-[#f5f5f5] border-none rounded-lg px-md py-sm font-body-md text-on-surface focus:ring-1 focus:ring-[#1a1a1a] transition-shadow outline-none"
-              >
-                <option value="< $500">
-                  {{ 'contact.form.options.budget.under500' | translate }}
-                </option>
-                <option value="$500 - $1k">
-                  {{ 'contact.form.options.budget.range500to1k' | translate }}
-                </option>
-                <option value="$1k - $3k">
-                  {{ 'contact.form.options.budget.range1to3k' | translate }}
-                </option>
-                <option value="$3k - $10k">
-                  {{ 'contact.form.options.budget.range3to10k' | translate }}
-                </option>
-                <option value="$10k+">
-                  {{ 'contact.form.options.budget.over10k' | translate }}
-                </option>
-              </select>
+              <app-select formControlName="budget" id="budget" [options]="budgetOptions" />
             </div>
           </div>
           <div class="flex flex-col gap-xs">

@@ -108,7 +108,7 @@
     "label": "CONTACTO",
     "title": "Construyamos algo juntos",
     "subtitle": "Actualmente estoy abierto a nuevas oportunidades. Ya sea que tengas una pregunta o simplemente quieras saludar, ¡haré todo lo posible por responderte!",
-    "location": "San Francisco, CA",
+    "location": "Isabela, PR",
     "form": {
       "name": "Nombre",
       "email": "Correo electrónico",
@@ -140,9 +140,9 @@
       "message": "Gracias por ponerte en contacto. Me pondré en contacto contigo lo antes posible.",
       "sendAnother": "Enviar otro"
     },
-    "resume": {
-      "title": "¿Necesitas una copia formal?",
-      "link": "DESCARGAR CV EN PDF"
+    "availability": {
+      "title": "Disponible para nuevos proyectos",
+      "subtitle": "Normalmente responde en 24 horas"
     }
   },
   "footer": {

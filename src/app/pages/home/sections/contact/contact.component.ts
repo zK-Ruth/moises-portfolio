@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ContactService } from '../../../../services/contact.service';
+import { SelectComponent, SelectOption } from '../../../../components/select/select.component';
 
 interface AmbientParticle {
   left: string;
@@ -16,7 +17,7 @@ interface AmbientParticle {
 @Component({
   selector: 'app-contact',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, TranslateModule],
+  imports: [ReactiveFormsModule, TranslateModule, SelectComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })
@@ -26,6 +27,23 @@ export class ContactComponent {
 
   readonly submitted = signal(false);
   readonly loading = signal(false);
+
+  readonly projectTypeOptions: SelectOption[] = [
+    { value: 'Full Stack App', labelKey: 'contact.form.options.projectType.fullstack' },
+    { value: 'E-commerce Website', labelKey: 'contact.form.options.projectType.ecommerce' },
+    { value: 'Infra/Template Structure', labelKey: 'contact.form.options.projectType.infra' },
+    { value: 'Portfolio', labelKey: 'contact.form.options.projectType.portfolio' },
+    { value: 'Secured Pipeline', labelKey: 'contact.form.options.projectType.pipeline' },
+    { value: 'Other', labelKey: 'contact.form.options.projectType.other' },
+  ];
+
+  readonly budgetOptions: SelectOption[] = [
+    { value: '< $500', labelKey: 'contact.form.options.budget.under500' },
+    { value: '$500 - $1k', labelKey: 'contact.form.options.budget.range500to1k' },
+    { value: '$1k - $3k', labelKey: 'contact.form.options.budget.range1to3k' },
+    { value: '$3k - $10k', labelKey: 'contact.form.options.budget.range3to10k' },
+    { value: '$10k+', labelKey: 'contact.form.options.budget.over10k' },
+  ];
 
   /** Decorative rising particles for the ambient backdrop (gold + cyan). */
   readonly particles: AmbientParticle[] = [
