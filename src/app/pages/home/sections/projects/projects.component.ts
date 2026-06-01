@@ -82,8 +82,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       accentColor: '#f5c400',
       icon: 'hourglass_top',
       image: 'images/playaspr.PNG',
-      disabled: true,
-      disabledLabel: 'projects.comingSoon',
+      disabled: false,
+      url: 'https://playaspr.com',
     },
     {
       id: 'crudapp',
@@ -95,7 +95,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       icon: 'hourglass_top',
       image: 'images/crudapp.PNG',
       disabled: true,
-      disabledLabel: 'projects.comingSoon',
+      disabledLabel: 'projects.private',
     },
     // {
     //   id: 'placeholder',
