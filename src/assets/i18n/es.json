@@ -62,17 +62,17 @@
         "title": "Pipelines CI/CD Seguros",
         "description": "Pipelines DevSecOps empresariales para sistemas aeroespaciales y de defensa en Collins Aerospace — automatizando builds, despliegues en contenedores y escaneo de seguridad para entregar software crítico con cumplimiento integrado."
       },
-      "placeholder1": {
+      "playaspr": {
         "title": "Playas PR",
-        "description": "Marcador de posición — agrega aquí la descripción de tu proyecto."
+        "description": "Una aplicación web que muestra las playas más populares de Puerto Rico, con actualizaciones de marea en vivo obtenidas mediante web scraping de fuentes públicas para que los bañistas puedan consultar las condiciones e identificar posibles peligros antes de salir. Construida con Angular, web scraping y APIs externas."
       },
-      "placeholder2": {
-        "title": "CRUD Application",
-        "description": "Marcador de posición — agrega aquí la descripción de tu proyecto."
+      "crudapp": {
+        "title": "Aplicación CRUD",
+        "description": "Una herramienta de gestión de reportes construida con C++ y SQL para enviar, rastrear y actualizar reportes y sus estados. Un sistema CRUD completo que aplica diseño orientado a objetos sobre una base de datos MySQL."
       },
-      "placeholder3": {
-        "title": "Título del Proyecto",
-        "description": "Marcador de posición — agrega aquí la descripción de tu proyecto."
+      "photography": {
+        "title": "Plantilla de Fotografía",
+        "description": "Una elegante plantilla web diseñada para que los fotógrafos muestren sus portafolios. Actualmente en desarrollo activo."
       }
     }
   },

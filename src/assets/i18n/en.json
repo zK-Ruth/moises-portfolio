@@ -64,15 +64,15 @@
       },
       "playaspr": {
         "title": "Playas PR",
-        "description": "Placeholder — add your project description here."
+        "description": "A web app showcasing Puerto Rico's most popular beaches, with live tide updates web-scraped from public sources so beachgoers can check conditions and spot potential dangers before heading out. Built with Angular, web scraping, and external APIs."
       },
       "crudapp": {
         "title": "CRUD Application",
-        "description": "Placeholder — add your project description here."
+        "description": "A report management tool built with C++ and SQL to submit, track, and update reports and their statuses. A full CRUD system applying object-oriented design over a MySQL database."
       },
-      "placeholder": {
-        "title": "Project Title",
-        "description": "Placeholder — add your project description here."
+      "photography": {
+        "title": "Photography Template",
+        "description": "A sleek website template crafted for photographers to showcase their portfolios. Currently in active development."
       }
     }
   },
