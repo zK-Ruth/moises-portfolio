@@ -63,6 +63,17 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       url: 'https://dinofeedback.web.app',
     },
     {
+      id: 'photography',
+      title: 'projects.items.photography.title',
+      description: 'projects.items.photography.description',
+      tags: ['TBD'],
+      category: 'fullstack',
+      accentColor: '#f5c400',
+      icon: 'hourglass_top',
+      image: 'images/photography.PNG',
+      url: 'https://photography-in-progress.web.app/',
+    },
+    {
       id: 'pipelines',
       title: 'projects.items.pipelines.title',
       description: 'projects.items.pipelines.description',
@@ -97,17 +108,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       disabled: true,
       disabledLabel: 'projects.private',
     },
-    // {
-    //   id: 'placeholder',
-    //   title: 'projects.items.placeholder.title',
-    //   description: 'projects.items.placeholder.description',
-    //   tags: ['TBD'],
-    //   category: 'fullstack',
-    //   accentColor: '#f5c400',
-    //   icon: 'hourglass_top',
-    //   disabled: true,
-    //   disabledLabel: 'projects.comingSoon',
-    // },
   ];
 
   readonly filteredProjects = computed(() => {

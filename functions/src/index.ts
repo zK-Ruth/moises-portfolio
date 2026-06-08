@@ -13,6 +13,8 @@ const corsHandler = cors({
     'http://localhost:4200',
     'https://moises-portfolio-mdcc.web.app',
     'https://moises-portfolio-mdcc.firebaseapp.com',
+    'https://moisescruz.dev',
+    'https://www.moisescruz.dev',
   ],
   methods: ['POST', 'OPTIONS'],
 });
